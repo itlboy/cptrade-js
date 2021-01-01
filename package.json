@@ -8,6 +8,8 @@
     "@sailshq/connect-redis": "^3.2.1",
     "@sailshq/lodash": "^3.10.3",
     "@sailshq/socket.io-redis": "^5.2.0",
+    "dayjs": "^1.9.8",
+    "lodash": "^4.17.20",
     "node-fetch": "^2.6.1",
     "sails": "^1.4.0",
     "sails-hook-apianalytics": "^2.0.3",
