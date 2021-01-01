@@ -1,0 +1,39 @@
+version: "3"
+services:
+    node:
+      build: ./build/node
+      volumes:
+        - ./data:/usr/src/app
+        - ./../../node_modules:/node_modules
+        - ./../../data:/data
+      environment:
+          - NODE_ENV=production
+          - PORT=3000
+          - DB_HOST=mysql-private.zotabox.net
+          - DB_NAME=widgets
+          - DB_USER=zotabox
+          - DB_PASSWORD=5UqRJzufuYseZGEVgZM34uh4vsQGQXzG
+      working_dir: /usr/src/app/www/public
+      command:
+        - /bin/bash
+        - -c 
+        -  |
+            if [ -f start.bash ]
+            then
+                bash start.bash
+            else
+                node www
+            fi
+      expose: 
+        - "3000"
+      restart: on-failure
+      logging:
+        options:
+          max-size: 500k
+      networks:    
+        - backend
+networks:
+  zotabox:
+    external: true
+  backend:
+    driver: bridge  
